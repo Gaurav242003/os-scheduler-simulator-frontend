@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// frontend/src/App.js
+import React, { useState } from 'react';
+import ProcessForm from './components/ProcessForm';
+// import ProcessList from './components/ProcessList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [processes, setProcesses] = useState([]);
+
+    const handleProcessAdded = (process) => {
+        setProcesses([...processes, process]);
+    };
+
+    return (
+        <div>
+            <h1>OS Process Scheduler Simulation</h1>
+            <ProcessForm onProcessAdded={handleProcessAdded} />
+            {/* <ProcessList processes={processes} /> */}
+        </div>
+    );
+};
 
 export default App;
